@@ -48,6 +48,10 @@ class Random(commands.Cog):
         embed = discord.Embed(color=0xffe5b4)
         embed.set_image(url=miraipic)
         await ctx.send(embed=embed)
+    
+    @commands.command()
+    async def hello(self, ctx):
+        await ctx.send("hello")
 
 def setup(bot):
     bot.add_cog(Random(bot))
