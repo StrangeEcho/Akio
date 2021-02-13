@@ -12,9 +12,7 @@ class Stats(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @commands.command()
-    async def ec(self, ctx):
-        await ctx.send(f'Executed Commands:\n{executed_commands}')
+    
     
     @commands.command(aliases=['botstats', 'info'])
     @commands.bot_has_permissions(embed_links = True)
