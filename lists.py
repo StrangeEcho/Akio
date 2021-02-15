@@ -113,5 +113,13 @@ mirai = [
 "https://i.imgur.com/obgU6yk.gif"  
 ]
 
-
+traps = [
+"https://i.ytimg.com/vi/ppAx09WfOKQ/maxresdefault.jpg",
+"http://images.sgcafe.net/2014/10/5408-1350963252.png",
+"https://66.media.tumblr.com/995569798c722ee4d7faad755bd54c47/tumblr_inline_pfpfbqcagS1s0q1be_640.jpg",
+"https://s3.narvii.com/image/2z4q6r7jlpvf6aztco6al2cktwjr6xyg_hq.jpg",
+"http://i0.kym-cdn.com/photos/images/original/001/349/907/1f6.png",
+"http://pm1.narvii.com/5979/28e65ef68ac80977f8b1962d4ca359e158925bb7_hq.jpg",
+"https://akibento.com/blog/wp-content/uploads/2016/10/4.jpg"
+]
 

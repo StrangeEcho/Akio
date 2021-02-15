@@ -53,5 +53,15 @@ class Random(commands.Cog):
     async def hello(self, ctx):
         await ctx.send("hello")
 
+    @commands.command()
+    async def trap(self, ctx):
+
+        trapsxd = random.choice(lists.traps)
+        
+        #Build Embed
+        embed = discord.Embed(description="Traps aren't gay xd", color=ctx.author.color)
+        embed.set_image(url=trapsxd)
+        await ctx.send(embed=embed)
+
 def setup(bot):
     bot.add_cog(Random(bot))
