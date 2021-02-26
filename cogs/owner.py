@@ -1,5 +1,7 @@
 import discord
 
+from typing import Optional
+
 from discord.ext import commands
 
 class Owner(commands.Cog):
@@ -7,12 +9,14 @@ class Owner(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
    
-    @commands.command(aliases=['Say'])
+    @commands.command(aliases=['echo'])
     @commands.is_owner()
-    async def say(self, ctx, *, message):
-        await ctx.send(message.replace("@everyone", "@\u200beveryone").replace("@here", "@\u200bhere"))
+    async def say(self, ctx, chan : Optional[discord.TextChannel] = None, *, message):
         await ctx.message.delete()
-    
+        if chan is None:
+            await ctx.send(message.replace("@everyone", "@\u200beveryone").replace("@here", "@\u200bhere"))
+        else: 
+            await chan.send(message.replace("@everyone", "@\u200beveryone").replace("@here", "@\u200bhere"))
     
     @commands.is_owner()
     @commands.command(name='frick', aliases=['sho'], hidden=True)
