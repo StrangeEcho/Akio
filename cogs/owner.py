@@ -15,9 +15,9 @@ class Owner(commands.Cog):
         """Say something with the bot."""
         await ctx.message.delete()
         if chan is None:
-            await ctx.send(msg)
+            await ctx.send(message.replace("@everyone", "@\u200beveryone").replace("@here", "@\u200bhere"))
         else:
-            await chan.send(msg)
+            await chan.send(message.replace("@everyone", "@\u200beveryone").replace("@here", "@\u200bhere"))
     
     @commands.is_owner()
     @commands.command(name='frick', aliases=['sho'], hidden=True)
