@@ -9,14 +9,15 @@ class Owner(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
    
-    @commands.command(aliases=['echo'])
+    @commands.command(aliases = ['echo']) 
     @commands.is_owner()
-    async def say(self, ctx, chan : Optional[discord.TextChannel] = None, *, message):
+    async def say(self, ctx, chan : Optional[discord.TextChannel] = None, *, msg):
+        """Say something with the bot."""
         await ctx.message.delete()
         if chan is None:
-            await ctx.send(message.replace("@everyone", "@\u200beveryone").replace("@here", "@\u200bhere"))
-        else: 
-            await chan.send(message.replace("@everyone", "@\u200beveryone").replace("@here", "@\u200bhere"))
+            await ctx.send(msg)
+        else:
+            await chan.send(msg)
     
     @commands.is_owner()
     @commands.command(name='frick', aliases=['sho'], hidden=True)
