@@ -11,7 +11,7 @@ class Owner(commands.Cog):
    
     @commands.command(aliases = ['echo']) 
     @commands.is_owner()
-    async def say(self, ctx, chan : Optional[discord.TextChannel] = None, *, msg):
+    async def say(self, ctx, chan : Optional[discord.TextChannel] = None, *, message):
         """Say something with the bot."""
         await ctx.message.delete()
         if chan is None:
