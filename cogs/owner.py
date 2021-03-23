@@ -79,6 +79,17 @@ class Owner(commands.Cog):
         await self.bot.logout()
         await self.bot.close()
 
+    @commands.command()
+    @commands.is_owner()
+    async def dm(self, ctx, user : discord.User, *, msg):
+        try:
+            await user.send(embed=discord.Embed(title="📧You Got Mail📧", description=msg, color=0x33DAFF).set_footer(icon_url=ctx.author.avatar_url, text=f"Message Sent To You By {ctx.author}"))
+            await ctx.send(f"Dm Sent to {user}", delete_after=6)
+        except Exception as e:
+            await ctx.send(e)
+
+
+
 def setup(bot):
     bot.add_cog(Owner(bot))
 
