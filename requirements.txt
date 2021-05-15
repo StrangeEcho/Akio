@@ -1,5 +1,2 @@
 discord.py
-jishaku
-psutil
-nekos.py
-EZPaginator
+colorama

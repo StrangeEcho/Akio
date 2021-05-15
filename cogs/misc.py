@@ -1,40 +1,27 @@
-import discord 
+import discord
+
 from discord.ext import commands
 
-import platform
-import config
+import aiohttp
 
-class Misc(commands.Cog):
-
-    def __init__(self, bot):
-        self.bot = bot 
+class Miscellaneous(commands.Cog):
+    def __init__(self, bot : commands.Bot):
+        self.bot = bot
     
-    @commands.command(brief = 'Ping Command')
-    async def ping(self, ctx):
-        embed = discord.Embed(
-            title='🏓Pong!',
-            description=f'{round(self.bot.latency * 1000)} Milliseconds',
-            color=0x33DAFF
-        )
-        await ctx.send(embed=embed)
+    @commands.command()
+    async def ping(self, ctx : commands.Context):
+        """Wacky Ping Command"""
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://animechan.vercel.app/api/random") as resp:
+                await ctx.send(embed=discord.Embed(
+                    title="**Pong!**",
+                    color=discord.Color.purple(),
+                    description=f"Websocket: {round(self.bot.latency * 1000)}ms"
+                )
+                .set_thumbnail(url=self.bot.user.avatar_url)
+                .set_footer(text=(await resp.json())["quote"])
+                )
 
-    @commands.command(name="invite")
-    async def invite(self, ctx):
-        await ctx.send("I sent you a private message!")
-        embed = discord.Embed(
-            title='Here you go! \:D',
-            description=f'Click [Here](https://discordapp.com/oauth2/authorize?&client_id=785248905679863868&scope=bot&permissions=8) To Invite Me',
-            color=0xffc2ff
-        )
-        await ctx.author.send(embed=embed)
+def setup(bot: commands.Bot):
+    bot.add_cog(Miscellaneous(bot))
 
-    @commands.command(hidden=True)
-    async def boost(self, ctx):
-        embed = discord.Embed(
-            color=0xffc2ff
-        )
-        embed.set_image(url='https://media1.tenor.com/images/68b7eca6ad0720a64a7e14d6bca83942/tenor.gif?itemid=11979611')
-        await ctx.send(embed=embed)
-        
-def setup(bot):
-    bot.add_cog(Misc(bot))
