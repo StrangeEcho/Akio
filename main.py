@@ -11,6 +11,18 @@ from config import prefix, status_str, token
 
 bot = commands.AutoShardedBot(commands.when_mentioned_or(prefix), intents=discord.Intents.all())
 
+bot.remove_command("help")
+
+class AkioHelpCommand(commands.MinimalHelpCommand):
+    async def send_pages(self):
+        destination = self.get_destination()
+        for page in self.paginator.pages:
+            await destination.send(embed=discord.Embed(description=page, color=0xFF0FF))
+
+bot.help_command = AkioHelpCommand(no_category="Help")
+
+
+
 
 loaded_cogs = 0
 
