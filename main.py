@@ -17,7 +17,7 @@ class AkioHelpCommand(commands.MinimalHelpCommand):
     async def send_pages(self):
         destination = self.get_destination()
         for page in self.paginator.pages:
-            await destination.send(embed=discord.Embed(description=page, color=0xFF0FF))
+            await destination.send(embed=discord.Embed(description=page, color=discord.Color.random()))
 
 bot.help_command = AkioHelpCommand(no_category="Help")
 

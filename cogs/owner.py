@@ -14,6 +14,28 @@ class Owner_Only(commands.Cog):
             await chan.send(msg)
         except discord.Forbidden as e:
             await ctx.send(e)
-            
+
+    @commands.command()
+    async def load(self, ctx, cog):
+        try:
+            await self.bot.load_extension(cog)
+        except commands.ExtensionError as e:
+            await ctx.send(e)
+    
+    @commands.command()
+    async def unload(self, ctx, cog):
+        try:
+            await self.bot.unload_extension(name)(cog)
+        except commands.ExtensionError as e:
+            await ctx.send(e)
+
+    @commands.command()
+    async def reload(self, ctx, cog):
+        try:
+            await self.bot.reload_extension(cog)
+        except commands.ExtensionError as e:
+            await ctx.send(e)
+
+
 def setup(bot: commands.Bot):
     bot.add_cog(Owner_Only(bot))
