@@ -12,7 +12,7 @@ class Actions(commands.Cog):
     @commands.guild_only()
     async def hug(self, ctx: commands.Context, *, person = default):
         async with aiohttp.ClientSession() as session:
-            async with session.get("https://waifu.pics/api/sfw/hug") as resp:
+            async with session.get("https://api.waifu.pics/sfw/hug") as resp:
                 await ctx.send(embed=discord.Embed(
                     color=ctx.author.color,
                     description=f"{ctx.author.mention} hugs {person}"
