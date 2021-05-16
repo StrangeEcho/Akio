@@ -8,7 +8,7 @@ import discord
 from discord.ext import commands
 
 
-class Owner_Only(commands.Cog):
+class OwnerOnly(commands.Cog):
     def __init__(self, bot : commands.Bot):
         self.bot = bot
         self._last_result = None
@@ -112,4 +112,4 @@ class Owner_Only(commands.Cog):
 
 
 def setup(bot: commands.Bot):
-    bot.add_cog(Owner_Only(bot))
+    bot.add_cog(OwnerOnly(bot))

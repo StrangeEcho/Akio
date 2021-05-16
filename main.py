@@ -6,7 +6,7 @@ from discord.ext import commands
 
 from colorama import Fore, Style
 
-from config import prefix, status_str, token
+from config import prefix, token
 
 
 bot = commands.AutoShardedBot(commands.when_mentioned_or(prefix), intents=discord.Intents.all())
@@ -35,8 +35,6 @@ print(Style.RESET_ALL)
 
 @bot.event
 async def on_ready():
-    await bot.wait_until_ready()
-    await bot.change_presence(activity=discord.Game(status_str))
     print(Fore.GREEN + f"Logged in as {bot.user.name}")
     print(f"ID: {bot.user.id}")
     print(f"Running Discord.py version {discord.__version__}")
