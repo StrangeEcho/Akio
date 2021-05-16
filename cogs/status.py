@@ -21,7 +21,7 @@ class Status(commands.Cog):
         await asyncio.sleep(60) 
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"you do {config.prefix}help"))
         await asyncio.sleep(60)
-        await bot.change_presence(activity=discord.Streaming(name="『　　』| Anime & Gaming", url="https://discord.gg/mfsvxkehuT"))
+        await self.bot.change_presence(activity=discord.Streaming(name="『　　』| Anime & Gaming", url="https://discord.gg/mfsvxkehuT"))
         await asyncio.sleep(60)
 
         
