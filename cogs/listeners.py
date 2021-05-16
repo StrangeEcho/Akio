@@ -1,8 +1,11 @@
 import discord
-
+from colorama import Fore, Style
 from discord.ext import commands
 
-from colorama import Fore, Style
+import logging
+
+log = logging.getLogger(__name__)
+
 
 class Listeners(commands.Cog):
     def __init__(self, bot : commands.Bot):
@@ -59,8 +62,8 @@ class Listeners(commands.Cog):
 
         elif isinstance(error, commands.CommandInvokeError):
             await ctx.send(f"```py\n{error}\n```")
-            print(error.original)
-            print("-" * 15)
+            log.error(Fore.RED + f"{ctx.command.qualified_name} failed to execute", exc_info=error.original,)
+            print(Style.RESET_ALL + "-" * 15)
 
     @commands.Cog.listener()
     async def on_command_completion(self, ctx : commands.Context):

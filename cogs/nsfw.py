@@ -1,8 +1,7 @@
 import discord
-
+import nekos
 from discord.ext import commands
 
-import nekos
 
 class NSFW(commands.Cog):
     

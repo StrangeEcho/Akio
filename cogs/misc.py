@@ -1,8 +1,7 @@
+import aiohttp
 import discord
-
 from discord.ext import commands
 
-import aiohttp
 
 class Miscellaneous(commands.Cog):
     def __init__(self, bot : commands.Bot):

@@ -1,7 +1,6 @@
+import aiohttp
 import discord
 from discord.ext import commands
-
-import aiohttp
 
 default = " " #empty string for when no one is passed to hug
 
