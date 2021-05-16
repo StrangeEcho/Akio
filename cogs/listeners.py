@@ -62,7 +62,7 @@ class Listeners(commands.Cog):
 
         elif isinstance(error, commands.CommandInvokeError):
             await ctx.send(f"```py\n{error}\n```")
-            log.error(Fore.RED + f"{ctx.command.qualified_name} failed to execute", exc_info=error.original,)
+            log.error(Fore.RED + f"**{ctx.command.qualified_name} failed to execute**", exc_info=error.original,)
             print(Style.RESET_ALL + "-" * 15)
 
     @commands.Cog.listener()

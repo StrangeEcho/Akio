@@ -10,7 +10,7 @@ class NSFW(commands.Cog):
     
     @commands.command()
     @commands.is_nsfw()
-    async def trap(self, ctx : commands.Context):
+    async def nsfwtrap(self, ctx : commands.Context):
         await ctx.send(nekos.img('trap'))    
 
     @commands.command()
