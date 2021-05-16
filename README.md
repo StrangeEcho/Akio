@@ -1,6 +1,6 @@
 # AKIO REWRITE
 
-<a href="https://discord.com/api/oauth2/authorize?client_id=785248905679863868&permissions=0&scope=bot"><img src="https://bit.ly/2SXygS1" alt="Akio"></a>
+<img src="https://bit.ly/3owiERb" width="380px">
 
 Update: The Re-write is almost done. I've successfully removed useless commands and rewrote the ones that had shit code(all of them)
 
