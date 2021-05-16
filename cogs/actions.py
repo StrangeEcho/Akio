@@ -18,7 +18,7 @@ class Actions(commands.Cog):
                     color=ctx.author.color,
                     description=f"{ctx.author.mention} hugs {person}"
                 )
-                .set_image(url=(resp.json())["url"])
+                .set_image(url=(await resp.json())["url"])
                 )
 
 def setup(bot : commands.Bot):
