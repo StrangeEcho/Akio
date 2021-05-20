@@ -2,26 +2,25 @@ import os
 import platform
 
 import discord
-from discord.ext import commands
-
 from colorama import Fore, Style
-
 from config import prefix, token
-
+from discord.ext import commands
 
 bot = commands.AutoShardedBot(commands.when_mentioned_or(prefix), intents=discord.Intents.all())
 
 bot.remove_command("help")
 
+
 class AkioHelpCommand(commands.MinimalHelpCommand):
     async def send_pages(self):
         destination = self.get_destination()
         for page in self.paginator.pages:
-            await destination.send(embed=discord.Embed(description=page, color=discord.Color.random()))
+            await destination.send(
+                embed=discord.Embed(description=page, color=discord.Color.random())
+            )
+
 
 bot.help_command = AkioHelpCommand(no_category="Help")
-
-
 
 
 loaded_cogs = 0
@@ -33,6 +32,7 @@ for cog in os.listdir("./cogs"):
         print(Fore.YELLOW + f"Loaded {cog}")
 print(Style.RESET_ALL)
 
+
 @bot.event
 async def on_ready():
     print(Fore.GREEN + f"Logged in as {bot.user.name}")
@@ -41,5 +41,6 @@ async def on_ready():
     print(f"Running on: {platform.system()} {platform.release()} ({os.name})")
     print(f"Loaded *{loaded_cogs}* cogs in total", Style.RESET_ALL)
     print("-" * 15)
+
 
 bot.run(token)
