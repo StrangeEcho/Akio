@@ -24,6 +24,7 @@ class OwnerOnly(commands.Cog):
 
 
     @commands.command(name='eval')
+    @commands.is_owner()
     async def _eval(self, ctx, *, body: str):
         """Evaluates python code"""
 
@@ -33,6 +34,7 @@ class OwnerOnly(commands.Cog):
             'channel': ctx.channel,
             'author': ctx.author,
             'guild': ctx.guild,
+            'reply': ctx.message.reference.resolved,
             'message': ctx.message,
             '_': self._last_result
         }
