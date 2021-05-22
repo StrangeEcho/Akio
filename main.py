@@ -25,13 +25,14 @@ bot.help_command = AkioHelpCommand(no_category="Help")
 
 
 loaded_cogs = 0
-
+print(Fore.MAGENTA + "STARTING COG LOADING PROCESS", Style.RESET_ALL)
 for cog in os.listdir("./cogs"):
     if cog.endswith(".py"):
         bot.load_extension(f"cogs.{cog[:-3]}")
         loaded_cogs += 1
-        print(Fore.YELLOW + f"Loaded {cog}")
-print(Style.RESET_ALL)
+        print(Fore.YELLOW + f"Loaded {cog}", Style.RESET_ALL)
+print(Fore.MAGENTA + "DONE", Style.RESET_ALL)
+print("-" * 15)
 
 @bot.event
 async def on_ready():
