@@ -18,7 +18,7 @@ class Miscellaneous(commands.Cog):
                         color=discord.Color.purple(),
                         description=f"Websocket: {round(self.bot.latency * 1000)}ms",
                     )
-                    .set_thumbnail(url=self.bot.user.avatar_url)
+                    .set_thumbnail(url=self.bot.user.avatar.url)
                     .set_footer(text=(await resp.json())["quote"])
                 )
 
