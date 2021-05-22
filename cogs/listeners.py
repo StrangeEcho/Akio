@@ -1,20 +1,18 @@
+import logging
+
 import discord
 from colorama import Fore, Style
 from discord.ext import commands
-
-import logging
 
 log = logging.getLogger(__name__)
 
 
 class Listeners(commands.Cog):
-    def __init__(self, bot : commands.Bot):
+    def __init__(self, bot: commands.Bot):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_command_error(
-        self, ctx: commands.Context, error: commands.CommandError
-    ):
+    async def on_command_error(self, ctx: commands.Context, error: commands.CommandError):
         """Handle errors caused by commands."""
         # Skips errors that were already handled locally.
         if getattr(ctx, "handled", False):
@@ -35,16 +33,12 @@ class Listeners(commands.Cog):
             await ctx.send(f"**{ctx.channel}** is not a NSFW channel")
 
         elif isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send(
-                f"You are missing some required arguments\n`{error.param.name}`"
-            )
+            await ctx.send(f"You are missing some required arguments\n`{error.param.name}`")
 
         elif isinstance(error, commands.NotOwner) or isinstance(
             error, commands.MissingPermissions
         ):
-            await ctx.send(
-                "You are missing the correct permissions to execute this command"
-            )
+            await ctx.send("You are missing the correct permissions to execute this command")
 
         elif isinstance(error, commands.CommandOnCooldown) or isinstance(
             error, commands.CheckFailure
@@ -62,18 +56,21 @@ class Listeners(commands.Cog):
 
         elif isinstance(error, commands.CommandInvokeError):
             await ctx.send(f"```py\n{error}\n```")
-            log.error(Fore.RED + f"**{ctx.command.qualified_name} failed to execute**", exc_info=error.original,)
+            log.error(
+                Fore.RED + f"**{ctx.command.qualified_name} failed to execute**",
+                exc_info=error.original,
+            )
             print(Style.RESET_ALL + "-" * 15)
 
     @commands.Cog.listener()
-    async def on_command_completion(self, ctx : commands.Context):
-        print(Fore.CYAN+ "Command Executed!")
+    async def on_command_completion(self, ctx: commands.Context):
+        print(Fore.CYAN + "Command Executed!")
         print(f"Command Name: {ctx.command.name}")
         print(f"Usage: {ctx.message.content}")
         print(f"Executed In: {ctx.guild.name}({ctx.guild.id})")
         print(f"Executed By {ctx.author}", Style.RESET_ALL)
         print("-" * 15)
-        
+
 
 def setup(bot):
     bot.add_cog(Listeners(bot))
