@@ -17,7 +17,7 @@ Setup Instructions(Mainly for Jay):
 ```bash
 git clone https://github.com/Yat-o/Akio
 touch config.py
-pip3 install -r requirements.txt
+pip3 install -r requirements.txt -U 
 ```
 - With that last command you now need to edit the config file. For this open the config.py file you just made in notepad and paste the pre-set config. I will dm you all of that and whatnot
 ### It should look like this(copy and paste if needed)
