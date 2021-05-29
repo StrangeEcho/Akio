@@ -1,3 +1,4 @@
 discord.py
 colorama
-nekos.py
+jishaku
+dpy-button-utils
