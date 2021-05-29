@@ -1,7 +1,7 @@
 import aiohttp
 import discord
 from discord.ext import commands
-
+from config import client_id
 
 class Miscellaneous(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -21,7 +21,14 @@ class Miscellaneous(commands.Cog):
                     .set_thumbnail(url=self.bot.user.avatar.url)
                     .set_footer(text=(await resp.json())["quote"])
                 )
-
+    
+    @commands.command()
+    async def invite(self, ctx: commands.Context):
+        try:
+            await ctx.author.send(f"Invite me using this link below!\nhttps://discord.com/api/oauth2/authorize?client_id={client_id}&permissions=0&scope=bot")
+            await ctx.send("You have mail!")
+        except discord.Forbidden:
+            await ctx.send("Can't Dm you, sorry. Check your privacy settings.")
 
 def setup(bot: commands.Bot):
     bot.add_cog(Miscellaneous(bot))

@@ -4,7 +4,7 @@
       {
         "name": "Akio",
         "script": "main.py",
-        "interpreter": "python3.6",
+        "interpreter": "./venv/bin/python3",
         "interpreter_args": "-u"
       }
     ]
