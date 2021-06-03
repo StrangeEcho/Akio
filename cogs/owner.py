@@ -6,6 +6,8 @@ from typing import Optional
 
 import discord
 from discord.ext import commands
+from dpy_button_utils.confirmation import ButtonConfirmation
+
 
 
 class OwnerOnly(commands.Cog):
@@ -33,7 +35,6 @@ class OwnerOnly(commands.Cog):
             "channel": ctx.channel,
             "author": ctx.author,
             "guild": ctx.guild,
-            "reply": ctx.message.reference.resolved,
             "message": ctx.message,
             "_": self._last_result,
         }
@@ -113,6 +114,21 @@ class OwnerOnly(commands.Cog):
         except commands.ExtensionError as e:
             await ctx.send(f"{e.__class__.__name__}: {e}")
 
+    @commands.command(aliases=["shutdown", "logout"])
+    @commands.is_owner()
+    async def die(self, ctx: commands.Context):
+        if await ButtonConfirmation(
+            ctx,
+            "Are you sure you want to do this? This command will completely shut me down and cut off my connection to discord!",
+            destructive=True,
+            confirm="Yes",
+            cancel="No"
+        ).run():
+            await ctx.send("Goodbye Senpai. Until next time. :Depresso:")
+            await self.bot.logout()
+        else:
+            await ctx.send("I guess I will stay then. \:)")
+        
 
 def setup(bot: commands.Bot):
     bot.add_cog(OwnerOnly(bot))
